@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Dudeulim Project</string>
+    <string name="sign_up_phone_description">당신의 휴대전화 번호를
+입력해주세요</string>
+    <string name="sign_up_confirm_description">인증번호를 입력해주세요</string>
+    <string name="sign_up_confirm_re_send">인증번호 재전송</string>
+    <string name="sign_up_password_description">비밀번호를 입력해주세요</string>
+    <string name="sign_up_password_state_text">영문 + 숫자로 8 ~ 15자 사이 비밀번호를 입력해주세요</string>
+
 </resources>
