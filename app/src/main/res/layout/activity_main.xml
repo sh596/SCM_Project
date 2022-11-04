@@ -1,18 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.example.dudeulimproject.view.main.MainActivity" />
+        <variable
+            name="viewModel"
+            type="com.example.dudeulimproject.view.main.viewModel.MainViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:context=".view.main.MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/frameMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            currentItem="@{viewModel.bottomNavigationPosition}"
+            setAdapter="@{activity}"
+            setPagerCallback="@{viewModel.changePosition}"
+            app:layout_constraintBottom_toTopOf="@id/linearMainBottomNavigation"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/linearMainBottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearMainItemMain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.changePosition(0)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{0}"
+                    android:id="@+id/imageMainItemMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/main" />
+
+                <TextView
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{0}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_bold"
+                    android:text="메인"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearMainItemSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.changePosition(1)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageMainItemSearch"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{1}"
+                    android:src="@drawable/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/bottomNavigationItemDefault"
+                     />
+
+                <TextView
+                    android:id="@+id/textMainItemSearch"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{1}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:text="탐색"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearMainItemInterView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.changePosition(2)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageMainItemInterView"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{2}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/inter_view"
+                    android:backgroundTint="?attr/bottomNavigationItemDefault" />
+
+                <TextView
+                    android:id="@+id/textMainItemInterView"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{2}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:text="인터뷰"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearMainItemProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.changePosition(3)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageMainItemProfile"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{3}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/profile"
+                    android:backgroundTint="?attr/bottomNavigationItemDefault" />
+
+                <TextView
+                    android:id="@+id/textMainItemProfile"
+                    position="@{viewModel.bottomNavigationPosition}"
+                    selectPosition="@{3}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_bold"
+                    android:text="프로필"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,143 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity">
-    
-    <LinearLayout
-        android:id="@+id/linearLoginLogoLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="178dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-        <ImageView
-            android:layout_width="84dp"
-            android:layout_height="84dp"
-            android:src="@drawable/logo"/>
+    <data>
+        <variable
+            name="activity"
+            type="com.example.dudeulimproject.view.LoginActivity" />
+    </data>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/maintitle"/>
-    </LinearLayout>
-    
-    <LinearLayout
-        android:visibility="gone"
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/linearLoginLogoLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+        android:layout_height="match_parent"
+        tools:context=".view.LoginActivity">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginTop="36dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="1dp"
-            app:cardCornerRadius="8dp">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:background="@null"
-                android:textSize="16sp"
-                android:hint="전화번호"
-                />
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginTop="12dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="1dp"
-            app:cardCornerRadius="8dp">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:background="@null"
-                android:textSize="16sp"
-                android:hint="비밀번호"
-                />
-
-        </com.google.android.material.card.MaterialCardView>
-        
-        <TextView
+        <LinearLayout
+            android:id="@+id/linearLoginLogoLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:textSize="13sp"
-            android:text="비밀번호 찾기"
-            android:textColor="?attr/textColorGray"/>
+            android:gravity="center"
+            android:layout_marginTop="178dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/logo" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:src="@drawable/maintitle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="97dp"
-            android:backgroundTint="@color/blue_700"
-            app:cardCornerRadius="8dp">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/linearLoginLogoLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginTop="36dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="8dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:background="@null"
+                    android:textSize="16sp"
+                    android:hint="전화번호" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginTop="12dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="8dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:background="@null"
+                    android:textSize="16sp"
+                    android:hint="비밀번호" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="?attr/textColorWhite"
-                android:text="로그인"
-                />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_marginTop="12dp"
+                android:textSize="13sp"
+                android:text="비밀번호 찾기"
+                android:textColor="?attr/textColorGray" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginTop="97dp"
+                android:backgroundTint="@color/blue_700"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="?attr/textColorWhite"
+                    android:text="로그인" />
+            </com.google.android.material.card.MaterialCardView>
 
 
-        <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginTop="12dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/blue_700"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:text="회원가입" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/buttonLoginGoogleSignIn"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="12dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/blue_700"
-            app:cardCornerRadius="8dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLoginLogoLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="?attr/colorPrimary"
-                android:text="회원가입"
-                />
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

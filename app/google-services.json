@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058292086400",
+    "project_id": "interview-2521c",
+    "storage_bucket": "interview-2521c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058292086400:android:58531ac0765f6585091865",
+        "android_client_info": {
+          "package_name": "com.example.dudeulimproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058292086400-jhgsf3nrof546t7hufca0hm69395ifo2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaj_iaGikS2aiLffY_CZ0BcRwN8TvUaAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058292086400-jhgsf3nrof546t7hufca0hm69395ifo2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,5 +3,5 @@
     <attr name="colorPrimary" format="color"/>
     <attr name="textColorGray" format="color"/>
     <attr name="textColorWhite" format="color"/>
-
+    <attr name="bottomNavigationItemDefault" format="color"/>
 </resources>
