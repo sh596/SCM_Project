@@ -1,18 +1,28 @@
-package com.example.dudeulimproject
+package com.example.dudeulimproject.view.main
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.os.Build
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.ObservableArrayList
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.example.dudeulimproject.R
+import com.example.dudeulimproject.view.main.adapter.ExploreInterViewAdapter
 import com.example.dudeulimproject.view.main.adapter.MainViewPagerAdapter
+import com.example.dudeulimproject.view.main.model.ExploreInterViewData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 object MainBindingAdapter {
-
 
     @RequiresApi(Build.VERSION_CODES.M)
     @BindingAdapter(
@@ -45,7 +55,6 @@ object MainBindingAdapter {
         }
     }
 
-
     @BindingAdapter("currentItem")
     @JvmStatic
     fun setAdapter(view: ViewPager2, position: Int) {
@@ -58,9 +67,10 @@ object MainBindingAdapter {
         view.adapter = MainViewPagerAdapter(activity as FragmentActivity)
     }
 
+
     @BindingAdapter("setPagerCallback")
     @JvmStatic
-    fun setPagerChangeFunction(view: ViewPager2, function : (Int) -> Unit ) {
+    fun setPagerChangeFunction(view: ViewPager2, function: (Int) -> Unit) {
         view.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -68,4 +78,34 @@ object MainBindingAdapter {
             }
         })
     }
+
+    @BindingAdapter("setExploreList")
+    @JvmStatic
+    fun setExploreList(
+        view: RecyclerView,
+        exploreInterViewList: ObservableArrayList<ExploreInterViewData>?
+    ) {
+        val adapter = view.adapter as ExploreInterViewAdapter? ?: return
+        if(exploreInterViewList != null) {
+            Log.d(TAG, "setExploreList: $exploreInterViewList")
+            adapter.submitList(exploreInterViewList.toMutableList())
+        }
+    }
+
+    @BindingAdapter("setSwipeRefresh")
+    @JvmStatic
+    fun setSwipeRefresh(
+        view: SwipeRefreshLayout, refresh :() -> Unit) {
+        view.setOnRefreshListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                launch {
+                    refresh()
+                }.join()
+                view.isRefreshing = false
+            }
+        }
+    }
+
+
+
 }

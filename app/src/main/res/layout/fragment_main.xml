@@ -1,79 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.dudeulimproject.view.main.viewmodel.MainFragmentViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.dudeulimproject.view.main.adapter.ExploreInterViewAdapter" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshMainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        setSwipeRefresh="@{viewModel.refresh}"
+        >
 
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="20dp" />
-
-        <TextView
-            android:id="@+id/textMainFragmentTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="196dp"
-            android:text="다른 사람의 경험을 찾아봐요"
-            android:textSize="24sp"
-            android:fontFamily="@font/font_bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/imageMainFragmentTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintTop_toBottomOf="@id/textMainFragmentTitle" />
-
-        <TextView
-            android:id="@+id/textMainFragmentPopularContentsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="지금 관심 많은 이야기"
-            android:textSize="18sp"
-            android:textColor="?attr/colorPrimary"
-            android:fontFamily="@font/font_bold"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/imageMainFragmentTitle" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerMainFragmentPopularContents"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toTopOf="@id/spaceFragmentBottomNavigation"
-            app:layout_constraintTop_toBottomOf="@id/textMainFragmentPopularContentsTitle"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_height="match_parent"
+            tools:context=".view.inter_view.InterViewActivity">
 
-        <Space
-            android:id="@+id/spaceFragmentBottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <TextView
+                    android:id="@+id/textMainFragmentTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="196dp"
+                    android:fontFamily="@font/font_bold"
+                    android:text="다른 사람의 경험을 찾아봐요"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/guideline1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageMainFragmentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@id/textMainFragmentTitle" />
+
+                <TextView
+                    android:id="@+id/textMainFragmentPopularContentsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:fontFamily="@font/font_bold"
+                    android:text="지금 관심 많은 이야기"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/guideline1"
+                    app:layout_constraintTop_toBottomOf="@id/imageMainFragmentTitle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerMainFragmentPopularContents"
+                    setExploreList="@{viewModel.popularInterViewList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/spaceFragmentBottomNavigation"
+                    app:layout_constraintTop_toBottomOf="@id/textMainFragmentPopularContentsTitle"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:spanCount="2" />
+
+                <Space
+                    android:id="@+id/spaceFragmentBottomNavigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="76dp"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </layout>

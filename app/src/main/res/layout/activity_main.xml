@@ -10,7 +10,7 @@
             type="com.example.dudeulimproject.view.main.MainActivity" />
         <variable
             name="viewModel"
-            type="com.example.dudeulimproject.view.main.viewModel.MainViewModel" />
+            type="com.example.dudeulimproject.view.main.viewmodel.MainViewModel" />
 
     </data>
 

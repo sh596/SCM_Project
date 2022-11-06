@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".InterViewActivity"
+            android:name=".view.inter_view.InterViewActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

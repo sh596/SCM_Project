@@ -8,8 +8,8 @@ import com.example.dudeulimproject.databinding.FragmentInterviewBinding
 import com.example.dudeulimproject.databinding.FragmentSearchBinding
 
 class SearchFragment :  BaseFragment<FragmentSearchBinding>(R.layout.fragment_search)  {
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }

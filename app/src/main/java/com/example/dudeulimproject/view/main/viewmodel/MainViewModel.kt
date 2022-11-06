@@ -1,11 +1,10 @@
-package com.example.dudeulimproject.view.main.viewModel
+package com.example.dudeulimproject.view.main.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlin.math.log
 
 class MainViewModel : ViewModel() {
     private val _bottomNavigationPosition = MutableLiveData<Int>()
