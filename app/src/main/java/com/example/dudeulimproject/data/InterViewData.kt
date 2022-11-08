@@ -1,6 +1,5 @@
-package com.example.dudeulimproject.view.inter_view.model
+package com.example.dudeulimproject.data
 
-import androidx.databinding.ObservableArrayList
 import com.example.dudeulimproject.UserData
 
 data class InterViewData (

@@ -1,14 +1,13 @@
-package com.example.dudeulimproject.view.inter_view.viewmodel
+package com.example.dudeulimproject.view.explore_inter_view.viewmodel
 
-import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.dudeulimproject.UserData
-import com.example.dudeulimproject.view.inter_view.model.InterViewData
-import com.example.dudeulimproject.view.inter_view.model.Review
+import com.example.dudeulimproject.data.InterViewData
+import com.example.dudeulimproject.data.Review
 
-class InterViewViewModel : ViewModel() {
+class ExploreInterViewViewModel : ViewModel() {
     private val _interViewData = MutableLiveData<InterViewData>()
     val interViewData: LiveData<InterViewData>
         get() = _interViewData
@@ -23,7 +22,8 @@ class InterViewViewModel : ViewModel() {
             "온라인",
             "IT",
             "100",
-            listOf(Review(1, UserData(1, "김형진", "", "개발자", "", false), 5, "오우 좆같아요"),
+            listOf(
+                Review(1, UserData(1, "김형진", "", "개발자", "", false), 5, "오우 좆같아요"),
                 Review(2, UserData(1, "김형진", "", "개발자", "", false), 5, "오우 좆같아요"),
                 Review(3, UserData(1, "김형진", "", "개발자", "", false), 5, "오우 좆같아요"),)
         )

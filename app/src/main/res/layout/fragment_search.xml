@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="fragment"
+            type="com.example.dudeulimproject.view.main.fragment.SearchFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.example.dudeulimproject.view.main.viewmodel.SearchFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,6 +50,7 @@
                 android:layout_height="match_parent">
 
                 <EditText
+                    android:id="@+id/editSearchFragmentSearchBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -51,16 +59,21 @@
                     android:hint="검색"
                     android:paddingStart="14dp"
                     android:paddingEnd="10dp"
+                    android:text="@={viewModel.searchText}"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:maxLines="1"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/imageSearchFragmentSearchButton" />
+                    app:layout_constraintEnd_toStartOf="@id/imageSearchFragmentSearchButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageSearchFragmentSearchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:onClick="@{fragment::clickSearch}"
                     android:paddingEnd="12dp"
                     android:src="@drawable/search"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -80,16 +93,67 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/cardSearchFragmentSearchBox" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:id="@+id/recyclerSearchFragmentCategory"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
             android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentCategoryTitle" />
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentCategoryTitle">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setCategory(0)}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    categoryPosition="@{0}"
+                    selectCategoryPosition="@{viewModel.category}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:fontFamily="@font/font_bold"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="4dp"
+                    android:text="온라인"
+                    android:textColor="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.setCategory(1)}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    categoryPosition="@{1}"
+                    selectCategoryPosition="@{viewModel.category}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:fontFamily="@font/font_bold"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="4dp"
+                    android:text="오프라인"
+                    android:textColor="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textSearchFragmentFieldTitle"
@@ -106,18 +170,23 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardSearchFragmentFieldSpinnerBox"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/blue_700"
+            android:paddingVertical="4dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/textSearchFragmentFieldTitle">
 
             <Spinner
-                android:layout_width="92dp"
+                android:id="@+id/spinnerSearchFragmentField"
+                bindItemSelectFunction="@{viewModel.setField}"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white" />
+                android:layout_marginVertical="4dp"
+                android:backgroundTint="@color/white"
+                android:popupBackground="?attr/colorPrimary" />
 
         </androidx.cardview.widget.CardView>
 
@@ -133,20 +202,24 @@
             app:layout_constraintTop_toBottomOf="@id/cardSearchFragmentFieldSpinnerBox" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardSearchFragmentAmountSpinnerBox"
+            android:id="@+id/cardSearchFragmentCoinSpinnerBox"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/blue_700"
-            app:cardElevation="0dp"
             app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/textSearchFragmentAmountTitle">
 
             <Spinner
-                android:layout_width="92dp"
+                android:id="@+id/spinnerSearchFragmentCoin"
+                bindItemSelectFunction="@{viewModel.setCoin}"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white" />
+                android:layout_marginVertical="4dp"
+                android:backgroundTint="@color/white"
+                android:popupBackground="?attr/colorPrimary" />
 
         </androidx.cardview.widget.CardView>
 

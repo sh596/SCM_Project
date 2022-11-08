@@ -1,20 +1,16 @@
 package com.example.dudeulimproject.view.main.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager.TAG
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dudeulimproject.view.inter_view.InterViewActivity
+import com.example.dudeulimproject.view.explore_inter_view.ExploreInterViewActivity
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.databinding.ItemExploreInterviewBinding
-import com.example.dudeulimproject.view.main.model.ExploreInterViewData
+import com.example.dudeulimproject.data.ExploreInterViewData
 
 class ExploreInterViewAdapter : ListAdapter<ExploreInterViewData, RecyclerView.ViewHolder>(DiffUtilCallback()) {
     private lateinit var binding: ItemExploreInterviewBinding
@@ -35,7 +31,7 @@ class ExploreInterViewAdapter : ListAdapter<ExploreInterViewData, RecyclerView.V
         fun onBind(item: ExploreInterViewData) {
             binding.interView = item
             binding.root.setOnClickListener {
-                binding.root.context.startActivity(Intent(binding.root.context, InterViewActivity::class.java))
+                binding.root.context.startActivity(Intent(binding.root.context, ExploreInterViewActivity::class.java))
             }
         }
     }

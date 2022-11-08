@@ -1,4 +1,4 @@
-package com.example.dudeulimproject.view.inter_view
+package com.example.dudeulimproject.view.explore_inter_view
 
 import android.os.Build
 import android.view.View
@@ -6,13 +6,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
-import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dudeulimproject.R
-import com.example.dudeulimproject.view.inter_view.adapter.ReviewAdapter
-import com.example.dudeulimproject.view.inter_view.model.Review
+import com.example.dudeulimproject.view.explore_inter_view.adapter.ReviewAdapter
+import com.example.dudeulimproject.data.Review
 
-object InterViewBindingAdapter {
+object ExploreInterViewBindingAdapter {
 
     @BindingAdapter("setReview")
     @JvmStatic

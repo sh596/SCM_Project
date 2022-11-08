@@ -1,19 +1,19 @@
-package com.example.dudeulimproject.view.inter_view
+package com.example.dudeulimproject.view.explore_inter_view
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.base.BaseActivity
-import com.example.dudeulimproject.databinding.ActivityInterViewBinding
-import com.example.dudeulimproject.view.inter_view.adapter.ReviewAdapter
-import com.example.dudeulimproject.view.inter_view.viewmodel.InterViewViewModel
+import com.example.dudeulimproject.databinding.ActivityExploreInterViewBinding
+import com.example.dudeulimproject.view.explore_inter_view.adapter.ReviewAdapter
+import com.example.dudeulimproject.view.explore_inter_view.viewmodel.ExploreInterViewViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class InterViewActivity : BaseActivity<ActivityInterViewBinding>(R.layout.activity_inter_view) {
-    private val viewModel :InterViewViewModel by viewModels()
+class ExploreInterViewActivity : BaseActivity<ActivityExploreInterViewBinding>(R.layout.activity_explore_inter_view) {
+    private val viewModel :ExploreInterViewViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel

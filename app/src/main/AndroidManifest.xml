@@ -13,6 +13,13 @@
         android:theme="@style/Theme.DudeulimProject"
         tools:targetApi="31">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CreateInterViewActivity"
             android:exported="false">
             <meta-data
@@ -20,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.inter_view.InterViewActivity"
+            android:name=".view.explore_inter_view.ExploreInterViewActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -69,12 +76,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".view.main.MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.search_result.SearchResultActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.request_inter_view.RequestInterViewActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

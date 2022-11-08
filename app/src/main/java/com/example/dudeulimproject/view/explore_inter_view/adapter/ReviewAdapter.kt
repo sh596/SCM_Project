@@ -1,17 +1,14 @@
-package com.example.dudeulimproject.view.inter_view.adapter
+package com.example.dudeulimproject.view.explore_inter_view.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dudeulimproject.view.inter_view.InterViewActivity
 import com.example.dudeulimproject.R
-import com.example.dudeulimproject.databinding.ItemExploreInterviewBinding
 import com.example.dudeulimproject.databinding.ItemReviewBinding
-import com.example.dudeulimproject.view.inter_view.model.Review
+import com.example.dudeulimproject.data.Review
 
 class ReviewAdapter : ListAdapter<Review, RecyclerView.ViewHolder>(DiffUtilCallback()) {
     private lateinit var binding: ItemReviewBinding

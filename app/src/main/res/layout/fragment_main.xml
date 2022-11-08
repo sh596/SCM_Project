@@ -25,7 +25,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.inter_view.InterViewActivity">
+            tools:context=".view.explore_inter_view.ExploreInterViewActivity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

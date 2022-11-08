@@ -2,7 +2,7 @@ package com.example.dudeulimproject.view.main.viewmodel
 
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.ViewModel
-import com.example.dudeulimproject.view.main.model.ExploreInterViewData
+import com.example.dudeulimproject.data.ExploreInterViewData
 
 class MainFragmentViewModel : ViewModel() {
     val popularInterViewList = ObservableArrayList<ExploreInterViewData>()

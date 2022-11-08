@@ -1,4 +1,4 @@
-package com.example.dudeulimproject.view.main.model
+package com.example.dudeulimproject.data
 
 data class ExploreInterViewData(
     val id: Int,

@@ -4,7 +4,11 @@ import android.app.Activity
 import android.content.ContentValues.TAG
 import android.os.Build
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
@@ -17,7 +21,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.view.main.adapter.ExploreInterViewAdapter
 import com.example.dudeulimproject.view.main.adapter.MainViewPagerAdapter
-import com.example.dudeulimproject.view.main.model.ExploreInterViewData
+import com.example.dudeulimproject.data.ExploreInterViewData
+import com.example.dudeulimproject.data.RequestInterViewData
+import com.example.dudeulimproject.view.main.adapter.RequestInterViewAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,7 +36,7 @@ object MainBindingAdapter {
         requireAll = false
     )
     @JvmStatic
-    fun selectItem(
+    fun selectBottomNavigationItem(
         view: ImageView,
         position: Int,
         selectPosition: Int,
@@ -45,7 +51,7 @@ object MainBindingAdapter {
     @RequiresApi(Build.VERSION_CODES.M)
     @BindingAdapter(value = ["position", "selectPosition"], requireAll = false)
     @JvmStatic
-    fun selectItem(view: TextView, position: Int, selectPosition: Int) {
+    fun selectBottomNavigationItem(view: TextView, position: Int, selectPosition: Int) {
         if (position == selectPosition) {
             view.setTextColor(view.context.getColor(R.color.blue_700))
             view.typeface = ResourcesCompat.getFont(view.context, R.font.font_bold)
@@ -67,6 +73,15 @@ object MainBindingAdapter {
         view.adapter = MainViewPagerAdapter(activity as FragmentActivity)
     }
 
+    @BindingAdapter("bindRequestInterViewAdapter")
+    @JvmStatic
+    fun bindRequestInterViewAdapter(view: RecyclerView, requestInterViewList: ObservableArrayList<RequestInterViewData>?) {
+        val adapter = view.adapter as RequestInterViewAdapter? ?: return
+        if(requestInterViewList != null) {
+            Log.d(TAG, "setExploreList: $requestInterViewList")
+            adapter.submitList(requestInterViewList.toMutableList())
+        }
+    }
 
     @BindingAdapter("setPagerCallback")
     @JvmStatic
@@ -105,6 +120,44 @@ object MainBindingAdapter {
             }
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    @BindingAdapter(
+        value = ["categoryPosition", "selectCategoryPosition"],
+        requireAll = false
+    )
+    @JvmStatic
+    fun selectCategoryItem(
+        view: TextView,
+        position: Int,
+        selectPosition: Int,
+    ) {
+        if (position == selectPosition) {
+            view.setBackgroundColor(view.context.getColor(R.color.blue_700))
+            view.setTextColor(view.context.getColor(R.color.white))
+        } else {
+            view.setBackgroundColor(view.context.getColor(R.color.gray_300))
+            view.setTextColor(view.context.getColor(R.color.gray_700))
+        }
+    }
+
+    @BindingAdapter("bindItemSelectFunction")
+    @JvmStatic
+    fun bindItemSelectFunction(
+        view: Spinner,
+        function: (Int) -> Unit,
+    ) {
+        view.onItemSelectedListener = object : OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                function(p2)
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
+    }
+
+
 
 
 
