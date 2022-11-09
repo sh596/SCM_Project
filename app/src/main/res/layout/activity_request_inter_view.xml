@@ -86,6 +86,7 @@
                     android:fontFamily="@font/font_medium"
                     android:gravity="center"
                     android:text="채팅"
+                    android:onClick="@{activity::clickChatButton}"
                     android:textColor="?attr/textColorGray"
                     app:layout_constraintBottom_toBottomOf="@id/cardRequestInterViewProfile"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"

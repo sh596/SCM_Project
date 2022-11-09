@@ -1,121 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.chat.ChatActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+        <variable
+            name="activity"
+            type="com.example.dudeulimproject.view.chat.ChatActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.example.dudeulimproject.view.chat.viewmodel.ChatViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_100">
+        tools:context=".view.chat.ChatActivity"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerChat"
+            bindChatList="@{viewModel.chatList}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="56dp"
+            android:background="@color/gray_100"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/constraintChatInputBar"/>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintChatToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintChatToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:onClick="@{activity::clickBackButton}"
-            android:paddingStart="24dp"
-            android:src="@drawable/back_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/font_bold"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintChatInputBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardSearchFragmentSearchBox"
-            android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginVertical="16dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/gray_100"
-            app:cardCornerRadius="21dp"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toStartOf="@id/cardChatPostButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <EditText
-                android:id="@+id/editSearchFragmentSearchBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:fontFamily="@font/font_medium"
-                android:hint="댓글.."
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:maxLines="1"
-                android:paddingStart="18dp"
-                android:paddingEnd="10dp"
-                android:text="@={viewModel.searchText}"
-                android:textSize="16sp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardChatPostButton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="?attr/colorPrimary"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{activity::clickBackButton}"
+                android:paddingStart="24dp"
+                android:src="@drawable/back_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:rotation="180"
-                android:background="@drawable/back_button"
-                android:backgroundTint="@color/white"/>
-        </androidx.cardview.widget.CardView>
+                android:fontFamily="@font/font_bold"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintChatInputBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSearchFragmentSearchBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/gray_100"
+                app:cardCornerRadius="40dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cardChatPostButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/editSearchFragmentSearchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:fontFamily="@font/font_medium"
+                    android:hint="채팅.."
+                    android:maxLines="1"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="18dp"
+                    android:text="@={viewModel.chattingText}"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardChatPostButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:onClick="@{activity::clickSendButton}"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/back_button"
+                    android:backgroundTint="@color/white"
+                    android:rotation="180" />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

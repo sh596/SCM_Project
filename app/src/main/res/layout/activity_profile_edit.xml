@@ -1,188 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileEditActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+    <data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintProfileEditFragmentToolbar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".view.profile_edit.ProfileEditActivity">
 
-        <ImageView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingStart="24dp"
-            android:src="@drawable/back_button"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintProfileEditFragmentToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="24dp"
+                android:src="@drawable/back_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardProfileFragmentImage"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="48dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@id/constraintProfileEditFragmentToolbar">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardProfileFragmentImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="24dp"
-        app:cardCornerRadius="48dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintProfileEditFragmentToolbar">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/defaultprofile" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textProfileEditNameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/font_bold"
-        android:text="이름"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/cardProfileFragmentImage" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardProfileEditNameBox"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/textProfileEditNameTitle"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:hint=""
-            android:maxLines="1"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <TextView
-        android:id="@+id/textProfileEditJobTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/font_bold"
-        android:text="직업"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/cardProfileEditNameBox" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardProfileEditJobBox"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/textProfileEditJobTitle"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:hint=""
-            android:maxLines="1"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/textProfileEditIntroduceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="소개"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/cardProfileEditJobBox" />
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardProfileEditIntroduceBox"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="48dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/textProfileEditIntroduceTitle"
-        app:layout_constraintBottom_toTopOf="@id/cardProfileEditSave"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp"
-        app:layout_constraintVertical_bias="0.0">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="top"
-            android:background="@null"
-            android:hint=""
-            android:paddingTop="12dp"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardProfileEditSave"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="@color/blue_700"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintVertical_bias="0.0">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/defaultprofile" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/textProfileEditNameTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="저장"
-            android:textColor="?attr/textColorWhite"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/font_bold"
+            android:text="이름"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/cardProfileFragmentImage" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProfileEditNameBox"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textProfileEditNameTitle"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:hint=""
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/textProfileEditJobTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/font_bold"
+            android:text="직업"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/cardProfileEditNameBox" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProfileEditJobBox"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textProfileEditJobTitle"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:hint=""
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textProfileEditIntroduceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="소개"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/cardProfileEditJobBox" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProfileEditIntroduceBox"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="48dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textProfileEditIntroduceTitle"
+            app:layout_constraintBottom_toTopOf="@id/cardProfileEditSave"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            app:layout_constraintVertical_bias="0.0">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="top"
+                android:background="@null"
+                android:hint=""
+                android:paddingTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProfileEditSave"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="@color/blue_700"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="저장"
+                android:textColor="?attr/textColorWhite"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
