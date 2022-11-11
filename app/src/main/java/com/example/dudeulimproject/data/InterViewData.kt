@@ -1,11 +1,9 @@
 package com.example.dudeulimproject.data
 
-import com.example.dudeulimproject.UserData
-
 data class InterViewData (
     val id : Int,
     val thumbnail : String,
-    val user: UserData,
+    val user: User,
     val title: String,
     val introduce: String,
     val category: String,
@@ -16,7 +14,7 @@ data class InterViewData (
 
 data class Review(
     val id: Int,
-    val user: UserData,
+    val user: User,
     val star: Int,
     val content: String,
 )

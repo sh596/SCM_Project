@@ -6,7 +6,7 @@
     <data>
         <variable
             name="review"
-            type="com.example.dudeulimproject.data.Review" />
+            type="com.example.dudeulimproject.data.Comment" />
 
     </data>
 
@@ -95,35 +95,35 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/star"
-                            star="@{review.star}"
+                            star="@{review.score}"
                             number="@{1}"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/star"
-                            star="@{review.star}"
+                            star="@{review.score}"
                             number="@{2}" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/star"
-                            star="@{review.star}"
+                            star="@{review.score}"
                             number="@{3}" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/star"
-                            star="@{review.star}"
+                            star="@{review.score}"
                             number="@{4}" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/star"
-                            star="@{review.star}"
+                            star="@{review.score}"
                             number="@{5}"/>
 
                     </LinearLayout>

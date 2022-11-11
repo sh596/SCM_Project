@@ -6,13 +6,13 @@
     <data>
         <variable
             name="activity"
-            type="com.example.dudeulimproject.view.LoginActivity" />
+            type="com.example.dudeulimproject.view.login.LoginActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.LoginActivity">
+        tools:context=".view.login.LoginActivity">
 
         <LinearLayout
             android:id="@+id/linearLoginLogoLayout"

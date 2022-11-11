@@ -7,26 +7,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dudeulimproject.R
+import com.example.dudeulimproject.data.Comment
 import com.example.dudeulimproject.databinding.ItemReviewBinding
 import com.example.dudeulimproject.data.Review
 
-class ReviewAdapter : ListAdapter<Review, RecyclerView.ViewHolder>(DiffUtilCallback()) {
+class ReviewAdapter : ListAdapter<Comment, RecyclerView.ViewHolder>(DiffUtilCallback()) {
     private lateinit var binding: ItemReviewBinding
 
-    class DiffUtilCallback : DiffUtil.ItemCallback<Review>(){
+    class DiffUtilCallback : DiffUtil.ItemCallback<Comment>(){
         override fun areItemsTheSame(
-            oldItem: Review,
-            newItem: Review
+            oldItem: Comment,
+            newItem: Comment
         ): Boolean = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: Review,
-            newItem: Review
+            oldItem: Comment,
+            newItem: Comment
         ): Boolean = oldItem.id == newItem.id
     }
 
     class ViewHolder(private val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: Review) {
+        fun onBind(item: Comment) {
             binding.review = item
         }
     }

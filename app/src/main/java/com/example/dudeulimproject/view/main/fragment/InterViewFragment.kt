@@ -8,7 +8,9 @@ import com.example.dudeulimproject.base.BaseFragment
 import com.example.dudeulimproject.databinding.FragmentInterviewBinding
 import com.example.dudeulimproject.view.main.adapter.RequestInterViewAdapter
 import com.example.dudeulimproject.view.main.viewmodel.InterViewViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InterViewFragment : BaseFragment<FragmentInterviewBinding>(R.layout.fragment_interview) {
 
     private val viewModel by viewModels<InterViewViewModel>()

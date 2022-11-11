@@ -13,7 +13,9 @@ import com.example.dudeulimproject.databinding.ActivityRequestInterViewBinding
 import com.example.dudeulimproject.view.chat.ChatActivity
 import com.example.dudeulimproject.view.request_inter_view.adapter.QuestionAdapter
 import com.example.dudeulimproject.view.request_inter_view.viewmodel.RequestInterViewViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RequestInterViewActivity : BaseActivity<ActivityRequestInterViewBinding>(R.layout.activity_request_inter_view) {
     private val viewModel by viewModels<RequestInterViewViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,8 @@ class RequestInterViewActivity : BaseActivity<ActivityRequestInterViewBinding>(R
         binding.activity = this
         binding.lifecycleOwner = this
         binding.recyclerRequestInterViewQuestion.adapter = QuestionAdapter()
+
+
     }
     fun clickBackButton(view: View){
         finish()

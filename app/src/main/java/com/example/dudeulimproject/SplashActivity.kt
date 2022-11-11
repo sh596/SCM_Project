@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.dudeulimproject.base.BaseActivity
 import com.example.dudeulimproject.databinding.ActivitySplashBinding
-import com.example.dudeulimproject.view.LoginActivity
+import com.example.dudeulimproject.view.login.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

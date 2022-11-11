@@ -12,7 +12,9 @@ import com.example.dudeulimproject.R
 import com.example.dudeulimproject.databinding.ItemExploreInterviewBinding
 import com.example.dudeulimproject.data.ExploreInterViewData
 
-class ExploreInterViewAdapter : ListAdapter<ExploreInterViewData, RecyclerView.ViewHolder>(DiffUtilCallback()) {
+class ExploreInterViewAdapter : ListAdapter<ExploreInterViewData, RecyclerView.ViewHolder>(
+    DiffUtilCallback()
+) {
     private lateinit var binding: ItemExploreInterviewBinding
 
     class DiffUtilCallback : DiffUtil.ItemCallback<ExploreInterViewData>(){
@@ -31,7 +33,9 @@ class ExploreInterViewAdapter : ListAdapter<ExploreInterViewData, RecyclerView.V
         fun onBind(item: ExploreInterViewData) {
             binding.interView = item
             binding.root.setOnClickListener {
-                binding.root.context.startActivity(Intent(binding.root.context, ExploreInterViewActivity::class.java))
+                val intent = Intent(binding.root.context, ExploreInterViewActivity::class.java)
+                intent.putExtra("interViewId", item.id)
+                binding.root.context.startActivity(intent)
             }
         }
     }

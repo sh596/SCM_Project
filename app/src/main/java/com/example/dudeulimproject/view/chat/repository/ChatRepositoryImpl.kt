@@ -5,7 +5,6 @@ import androidx.databinding.ObservableArrayList
 import androidx.fragment.app.FragmentManager.TAG
 import com.example.dudeulimproject.data.ChatData
 import com.example.dudeulimproject.data.ChatRoomData
-import com.example.dudeulimproject.utils.FirebaseUtilCode.Companion.getFirestore
 import com.google.firebase.firestore.DocumentReference
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
@@ -13,11 +12,13 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class ChatRepositoryImpl : ChatRepository {
     override suspend fun sendMessage(chatData: ChatData): DocumentReference? {
-        return getFirestore()
+        return Firebase.firestore
             .collection("chatRoom")
             .document(chatData.InterViewId)
             .collection("Chat")
@@ -26,7 +27,7 @@ class ChatRepositoryImpl : ChatRepository {
     }
 
     override fun subscribeMessages(list: ObservableArrayList<ChatData>, roomId: String) {
-        getFirestore()
+        Firebase.firestore
             .collection("chatRoom")
             .document(roomId)
             .collection("Chat")
@@ -49,7 +50,7 @@ class ChatRepositoryImpl : ChatRepository {
     }
 
     override suspend fun receiveChatData(roomId: String): QuerySnapshot {
-        return getFirestore()
+        return Firebase.firestore
             .collection("chatRoom")
             .document(roomId)
             .collection("Chat")

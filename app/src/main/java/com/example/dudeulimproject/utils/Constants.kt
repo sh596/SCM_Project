@@ -1,6 +1,5 @@
 package com.example.dudeulimproject.utils
 
-object ExploreInterViewType {
-    const val NORMAL = 0
-    const val PROGRESS = 1
+object Constants {
+    var ACCESS_TOKEN : String? = null
 }

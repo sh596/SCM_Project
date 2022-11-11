@@ -75,9 +75,12 @@ object MainBindingAdapter {
 
     @BindingAdapter("bindRequestInterViewAdapter")
     @JvmStatic
-    fun bindRequestInterViewAdapter(view: RecyclerView, requestInterViewList: ObservableArrayList<RequestInterViewData>?) {
+    fun bindRequestInterViewAdapter(
+        view: RecyclerView,
+        requestInterViewList: ObservableArrayList<RequestInterViewData>?
+    ) {
         val adapter = view.adapter as RequestInterViewAdapter? ?: return
-        if(requestInterViewList != null) {
+        if (requestInterViewList != null) {
             Log.d(TAG, "setExploreList: $requestInterViewList")
             adapter.submitList(requestInterViewList.toMutableList())
         }
@@ -101,7 +104,7 @@ object MainBindingAdapter {
         exploreInterViewList: ObservableArrayList<ExploreInterViewData>?
     ) {
         val adapter = view.adapter as ExploreInterViewAdapter? ?: return
-        if(exploreInterViewList != null) {
+        if (exploreInterViewList != null) {
             Log.d(TAG, "setExploreList: $exploreInterViewList")
             adapter.submitList(exploreInterViewList.toMutableList())
         }
@@ -110,7 +113,8 @@ object MainBindingAdapter {
     @BindingAdapter("setSwipeRefresh")
     @JvmStatic
     fun setSwipeRefresh(
-        view: SwipeRefreshLayout, refresh :() -> Unit) {
+        view: SwipeRefreshLayout, refresh: () -> Unit
+    ) {
         view.setOnRefreshListener {
             CoroutineScope(Dispatchers.Main).launch {
                 launch {
@@ -147,18 +151,16 @@ object MainBindingAdapter {
         view: Spinner,
         function: (Int) -> Unit,
     ) {
-        view.onItemSelectedListener = object : OnItemSelectedListener{
+        view.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 function(p2)
             }
+
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
 
     }
-
-
-
 
 
 }

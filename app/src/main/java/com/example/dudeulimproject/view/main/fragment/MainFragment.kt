@@ -8,7 +8,9 @@ import com.example.dudeulimproject.base.BaseFragment
 import com.example.dudeulimproject.databinding.FragmentMainBinding
 import com.example.dudeulimproject.view.main.adapter.ExploreInterViewAdapter
 import com.example.dudeulimproject.view.main.viewmodel.MainFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private val viewModel: MainFragmentViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

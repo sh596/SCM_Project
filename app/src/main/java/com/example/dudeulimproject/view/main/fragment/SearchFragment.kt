@@ -11,11 +11,13 @@ import com.example.dudeulimproject.databinding.FragmentSearchBinding
 import com.example.dudeulimproject.view.search_result.SearchResultActivity
 import com.example.dudeulimproject.view.explore_inter_view.adapter.FieldSpinnerAdapter
 import com.example.dudeulimproject.view.main.viewmodel.SearchFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
     private val viewModel by viewModels<SearchFragmentViewModel>()
-    private lateinit var fieldItems : Array<String>
-    private lateinit var coinItems : Array<String>
+    private lateinit var fieldItems: Array<String>
+    private lateinit var coinItems: Array<String>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
@@ -30,7 +32,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         binding.spinnerSearchFragmentField.adapter = fieldAdapter
         binding.spinnerSearchFragmentCoin.adapter = coinAdapter
 
-        binding.editSearchFragmentSearchBox.setOnEditorActionListener {_, p1, _ ->
+        binding.editSearchFragmentSearchBox.setOnEditorActionListener { _, p1, _ ->
             when (p1) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     clickSearch(binding.root)
@@ -45,8 +47,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         val intent = Intent(binding.root.context, SearchResultActivity::class.java)
         intent.putExtra("searchText", viewModel.searchText.value)
         intent.putExtra("category", viewModel.category.value)
-        intent.putExtra("coin", coinItems[viewModel.field.value!!])
-        intent.putExtra("field", fieldItems[viewModel.coin.value!!])
+        intent.putExtra("field", viewModel.field.value!!)
+        intent.putExtra("coin", viewModel.coin.value!!)
         startActivity(intent)
+
     }
 }

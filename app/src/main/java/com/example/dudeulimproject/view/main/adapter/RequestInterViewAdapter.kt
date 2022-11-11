@@ -13,7 +13,9 @@ import com.example.dudeulimproject.data.RequestInterViewData
 import com.example.dudeulimproject.databinding.ItemRequestInterviewBinding
 import com.example.dudeulimproject.view.request_inter_view.RequestInterViewActivity
 
-class RequestInterViewAdapter : ListAdapter<RequestInterViewData, RecyclerView.ViewHolder>(DiffUtilCallback()) {
+class RequestInterViewAdapter : ListAdapter<RequestInterViewData, RecyclerView.ViewHolder>(
+    DiffUtilCallback()
+) {
     private lateinit var binding: ItemRequestInterviewBinding
 
     class DiffUtilCallback : DiffUtil.ItemCallback<RequestInterViewData>(){
@@ -32,7 +34,8 @@ class RequestInterViewAdapter : ListAdapter<RequestInterViewData, RecyclerView.V
         fun onBind(item: RequestInterViewData) {
             binding.interView = item
             binding.root.setOnClickListener {
-                binding.root.context.startActivity(Intent(binding.root.context, RequestInterViewActivity::class.java))
+                val intent = Intent(binding.root.context, RequestInterViewActivity::class.java)
+                binding.root.context.startActivity(intent)
             }
         }
     }

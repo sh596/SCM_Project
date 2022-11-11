@@ -56,19 +56,22 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        loadImage="@{viewModel.interViewData.thumbnail}"/>
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
                     android:id="@+id/textInterViewTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:layout_marginTop="28dp"
                     android:fontFamily="@font/font_bold"
                     android:text="@{viewModel.interViewData.title}"
                     android:textSize="24dp"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
-                    app:layout_constraintTop_toBottomOf="@id/cardInterViewThumbnail" />
+                    app:layout_constraintTop_toBottomOf="@id/cardInterViewThumbnail"
+                    app:layout_constraintEnd_toEndOf="@id/guideline2"/>
 
                 <TextView
                     android:id="@+id/textInterViewJob"
@@ -76,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/font_bold"
-                    android:text="@{viewModel.interViewData.title}"
+                    android:text="@{viewModel.interViewData.user.job}"
                     android:textColor="?attr/colorPrimary"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -88,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_bold"
-                    android:text="@{viewModel.interViewData.category + `인터뷰`}"
+                    bindCategory="@{viewModel.interViewData.category}"
                     android:textColor="?attr/textColorGray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -99,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/font_medium"
-                    android:text="@{viewModel.interViewData.coin + `코인`}"
+                    android:text="@{viewModel.interViewData.amount + `코인`}"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"
                     app:layout_constraintTop_toBottomOf="@id/textInterViewTitle" />
@@ -137,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/font_medium"
-                    android:text="@{viewModel.interViewData.introduce}"
+                    android:text="@{viewModel.interViewData.description}"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -156,7 +159,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerInterViewReview"
-                    setReview="@{viewModel.interViewData.review}"
+                    setReview="@{viewModel.interViewData.comments}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -173,7 +176,7 @@
 
 
                 <TextView
-                    recyclerVisibility="@{viewModel.interViewData.review}"
+                    recyclerVisibility="@{viewModel.interViewData.comments}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_bold"
