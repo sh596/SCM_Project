@@ -6,12 +6,13 @@ import com.example.dudeulimproject.data.User
 
 object DummyData {
     val DUMMY_USER_1 =
-        User("", "kd531585@gmail.com", "8ed3ab06-e5db-4452-b94c-116869844e31", "480b711c-7cbf-44fd-b267-023ca251d272", "개발자", "박금혁")
+        User("", "kd531585@gmail.com", "50ff34e3-69d8-4ec0-a860-ceb8abe5906e", "480b711c-7cbf-44fd-b267-023ca251d272", "개발자", "박금혁")
     val DUMMY_USER_2 =
-        User("", "kd531585@gmail.com", "7d4062a2-eb23-47b8-89cd-f356087a021d", "9350c193-056f-49b6-9478-137bde19c448", "개발자", "김병주")
+        User("", "21sunrin090@sunrint.hs.kr", "6f6666d6-3f70-449f-8010-613c4286159e", "9350c193-056f-49b6-9478-137bde19c448", "개발자", "김병주")
+
     val DUMMY_REQUEST_INTERVIEW_SEE_MORE_1 = RequestInterViewSeeMoreData(
         "001",
-        "목탁 조이고",
+        "선린인터넷고등학교 학생 인터뷰",
         "12/10 10:00",
         "선린인터넷고등학교|37.5428|126.9672",
         "offline",
@@ -30,7 +31,7 @@ object DummyData {
         DUMMY_USER_1)
     val DUMMY_PROCEED_INTERVIEW_SEE_MORE_1 = RequestInterViewSeeMoreData(
         "001",
-        "백엔드 개발자 박금혁의 이야기",
+        "선린인터넷고등학교 학생 인터뷰",
         "12/29",
         "",
         "online",
@@ -42,7 +43,7 @@ object DummyData {
         "002",
         "백엔드 개발자 박금혁의 이야기",
         "12/21",
-        "",
+        "선린인터넷고등학교|37.5428|126.9672",
         "offline",
         listOf(""),
         DUMMY_USER_2,
@@ -53,7 +54,7 @@ object DummyData {
         "001",
         "480b711c-7cbf-44fd-b267-023ca251d272",
         "12-19",
-        "개발자 박금혁에 이야기를 들려드립니다",
+        "개발자 박금혁의 이야기를 들려드립니다",
         "online",
         true,
         DUMMY_USER_1
@@ -62,7 +63,7 @@ object DummyData {
         "002",
         "b9a95495-e6f7-40ee-a2ff-4f3da5690ea1",
         "12-21",
-        "쇼콜라티에 인터뷰",
+        "개발자 김병주의 이야기를 들려드립니다",
         "offline",
         false,
         DUMMY_USER_2
@@ -71,7 +72,7 @@ object DummyData {
         "001",
         "480b711c-7cbf-44fd-b267-023ca251d272",
         "12-19",
-        "개발자 박금혁에 이야기를 들려드립니다",
+        "개발자 박금혁의 이야기를 들려드립니다",
         "online",
         true,
         DUMMY_USER_1
@@ -81,7 +82,7 @@ object DummyData {
         "002",
         "480b711c-7cbf-44fd-b267-023ca251d272",
         "12-19",
-        "개발자 박금혁에 이야기를 들려드립니다",
+        "개발자 박금혁의 이야기를 들려드립니다",
         "offline",
         false,
         DUMMY_USER_2

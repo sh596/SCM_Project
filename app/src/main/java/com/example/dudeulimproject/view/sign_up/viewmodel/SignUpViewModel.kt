@@ -1,6 +1,7 @@
 package com.example.dudeulimproject.view.sign_up.viewmodel
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,6 +28,8 @@ class SignUpViewModel @Inject constructor(
     val imageUUID: LiveData<String>
         get() = _imageUUID
 
+    val job = MutableLiveData<String>()
+
     init {
         _imageUUID.value = ""
     }
@@ -39,7 +42,7 @@ class SignUpViewModel @Inject constructor(
             val response = repository.singUp(RegistRequest(preferences.getString("idToken","").toString(), nickname.value.toString(), imageUUID.value.toString()))
             if (response.isSuccessful) {
                 _token.postValue(Resource.success(response.body()))
-                editor.putString("accessToken", token.value.toString())
+                editor.putString("accessToken", token.value!!.data!!.accessToken).apply()
                 editor.apply()
             } else {
                 _token.postValue(Resource.failed(response.code().toString()))

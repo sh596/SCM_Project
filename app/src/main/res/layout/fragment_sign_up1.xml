@@ -5,7 +5,7 @@
 
     <data>
             <variable
-                name="activity"
+                name="fragment"
                 type="com.example.dudeulimproject.view.sign_up.SignUpFragment1" />
             <variable
                 name="viewModel"

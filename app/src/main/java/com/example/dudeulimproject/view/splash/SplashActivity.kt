@@ -23,22 +23,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
-    private lateinit var mAuth : FirebaseAuth
     private val viewModel : SplashViewModel by viewModels()
-    override fun onStart() {
-        super.onStart()
-        val user: FirebaseUser? = mAuth.currentUser
-        if (user != null) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        } else {
-            signInAnonymously()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mAuth = FirebaseAuth.getInstance()
         viewModel.checkResult.observe(this, Observer {
             if(it.status == State.Success){
                 startActivity(Intent(this, MainActivity::class.java))
@@ -49,18 +37,5 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             }
         })
         viewModel.checkLogin()
-    }
-    private fun signInAnonymously() {
-        mAuth.signInAnonymously().addOnSuccessListener(this, OnSuccessListener<AuthResult?> {
-            // do your stuff
-        })
-            .addOnFailureListener(this,
-                OnFailureListener { exception ->
-                    Log.e(
-                        TAG,
-                        "signInAnonymously:FAILURE",
-                        exception
-                    )
-                })
     }
 }

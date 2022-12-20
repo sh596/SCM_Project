@@ -56,6 +56,7 @@ class ProfileEditViewModel @Inject constructor(
                     nickname.value!!
                 )
             )
+
             if (result.isSuccessful) {
                 _updateResult.postValue(Resource.success(result.body()))
             } else {
@@ -69,8 +70,8 @@ class ProfileEditViewModel @Inject constructor(
             val result = profileRepository.getMyProfile()
             if (result.isSuccessful) {
                 nickname.postValue(result.body()!!.name)
-                job.postValue(result.body()!!.job.toString())
-                description.postValue(result.body()!!.description.toString())
+                job.postValue(result.body()!!.job.convertNull())
+                description.postValue(result.body()!!.description.convertNull())
                 _imageUUID.postValue(result.body()!!.image)
             }
         }
@@ -81,14 +82,19 @@ class ProfileEditViewModel @Inject constructor(
     }
 
     private fun uploadImage() {
-        val storage = FirebaseStorage.getInstance()
-        val storageRef = storage.reference
-        val uuid = UUID.randomUUID()
-        val fileName = "$uuid.jpg"
-        _imageUUID.postValue(uuid.toString())
-        val riversRef = storageRef.child("/$fileName")
+        uri.value?.let {
+            val storage = FirebaseStorage.getInstance()
+            val storageRef = storage.reference
+            val uuid = UUID.randomUUID()
+            val fileName = "$uuid.jpg"
+            _imageUUID.postValue(uuid.toString())
+            val riversRef = storageRef.child("/$fileName")
 
-        val result = riversRef.putFile(uri.value!!)
+            val result = riversRef.putFile(it)
+        }
     }
 
+    private fun String?.convertNull() : String{
+        return this ?: ""
+    }
 }

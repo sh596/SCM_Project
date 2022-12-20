@@ -22,8 +22,7 @@ import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 @AndroidEntryPoint
-class SignUpFragment2 : BaseFragment<FragmentSignUp2Binding>(R.layout.fragment_sign_up2),
-    NavigationFragment {
+class SignUpFragment2 : BaseFragment<FragmentSignUp2Binding>(R.layout.fragment_sign_up2){
     private var isLoading = false
     private lateinit var idToken: String
     private lateinit var nickname: String
@@ -59,8 +58,8 @@ class SignUpFragment2 : BaseFragment<FragmentSignUp2Binding>(R.layout.fragment_s
             }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.activity = this
         binding.lifecycleOwner = this
@@ -74,14 +73,5 @@ class SignUpFragment2 : BaseFragment<FragmentSignUp2Binding>(R.layout.fragment_s
         resultLauncher.launch(intent)
     }
 
-    override fun clickBackButton() {
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.actionPopSignUpFragment2)
-    }
-
-    override fun clickNextButton() {
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.action_signUpFragment2_to_signUpFragment3)
-    }
 
 }

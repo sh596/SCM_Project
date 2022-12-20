@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/createInterViewFragment2"
-        android:label="CreateInterViewFragment1"
+        android:label="CreateInterViewFragment2"
         android:name="com.example.dudeulimproject.view.create_inter_view.fragment.CreateInterViewFragment2"
         tools:layout="@layout/fragment_create_inter_view_2">
 

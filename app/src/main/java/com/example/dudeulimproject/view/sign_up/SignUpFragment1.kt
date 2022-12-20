@@ -2,6 +2,7 @@ package com.example.dudeulimproject.view.sign_up
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -14,28 +15,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SignUpFragment1 @Inject constructor(private val preferences: SharedPreferences): BaseFragment<FragmentSignUp1Binding>(R.layout.fragment_sign_up1),
-    NavigationFragment {
+class SignUpFragment1: BaseFragment<FragmentSignUp1Binding>(R.layout.fragment_sign_up1){
     private val viewModel : SignUpViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
-        binding.activity = this
+        binding.fragment = this
         binding.lifecycleOwner = this
     }
-
-    override fun clickBackButton() {
-        activity?.finish()
-    }
-
-    override fun clickNextButton() {
-        if( !(viewModel.nickname.value.isNullOrBlank()) ||viewModel.nickname.value!!.length in 4..12 ) {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_signUpFragment1_to_signUpFragment2)
-        }else {
-            Toast.makeText(binding.root.context, "입력 조건을 맞춰주세요", Toast.LENGTH_SHORT).show()
-        }
-    }
-
 }

@@ -61,32 +61,16 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/textSignUpNicknameTitle" />
 
-        <Spinner
-            android:id="@+id/spinnerSignUpJob"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/font_medium"
-            android:layout_marginTop="64dp"
-            android:textSize="18sp"
-            android:background="@drawable/spinner_style"
-            android:popupBackground="@drawable/spinner_popup_style"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/textSignUpNicknameDescription"
-            />
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSignUpJobBox"
             android:layout_width="0dp"
-            android:visibility="invisible"
             android:layout_height="48dp"
             android:layout_marginTop="48dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/spinnerSignUpJob"
+            app:layout_constraintTop_toBottomOf="@id/textSignUpNicknameDescription"
             app:strokeColor="@color/black"
             app:strokeWidth="1dp">
 
@@ -98,6 +82,7 @@
                 android:fontFamily="@font/font_medium"
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
+                android:hint="직업"
                 android:textSize="18sp" />
 
         </com.google.android.material.card.MaterialCardView>

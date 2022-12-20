@@ -17,16 +17,14 @@ import com.example.dudeulimproject.view.sign_up.viewmodel.SignUpViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
-class SignUpFragment3 : BaseFragment<FragmentSignUp3Binding>(R.layout.fragment_sign_up_3),
-    NavigationFragment {
+class SignUpFragment3 : BaseFragment<FragmentSignUp3Binding>(R.layout.fragment_sign_up_3){
     private val viewModel : SignUpViewModel by activityViewModels()
     private var isLoading : Boolean = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        viewModel.token.observe(viewLifecycleOwner
-        ) { t ->
+        viewModel.token.observe(viewLifecycleOwner) { t ->
             if (t!!.status == State.Success) {
                 startActivity(Intent(binding.root.context, MainActivity::class.java))
             }else if(t.status == State.Failed) {
@@ -36,22 +34,7 @@ class SignUpFragment3 : BaseFragment<FragmentSignUp3Binding>(R.layout.fragment_s
                 mGoogleSignInClient.signOut()
             }
         }
-        bindSpinnerAdapter()
-
-    }
-    private fun bindSpinnerAdapter() {
-        val fieldItems = resources.getStringArray(R.array.field_array)
-        val fieldAdapter = FieldSpinnerAdapter(binding.root.context, fieldItems.toList())
-        binding.spinnerSignUpJob.adapter = fieldAdapter
 
     }
 
-    override fun clickNextButton() {
-        viewModel.signUp()
-    }
-
-    override fun clickBackButton() {
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.actionPopSignUpFragment2)
-    }
 }

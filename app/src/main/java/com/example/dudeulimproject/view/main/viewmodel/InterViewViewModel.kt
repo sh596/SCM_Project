@@ -30,11 +30,16 @@ class InterViewViewModel @Inject constructor(private val repository: RequestFrag
             requestInterViewList.clear()
             proceedInterViewList.clear()
             requestInterViewResponse.value = Resource.loading()
-            getRequestInterView()
+            getDummyData()
+//            getRequestInterView()
         }
     }
     init {
+        getDummyData()
         getRequestInterView()
+    }
+
+    private fun getDummyData(){
         requestInterViewList.addAll(
             listOf(DUMMY_REQUEST_INTERVIEW_1, DUMMY_REQUEST_INTERVIEW_2))
         proceedInterViewList.addAll(
@@ -43,7 +48,6 @@ class InterViewViewModel @Inject constructor(private val repository: RequestFrag
             )
         )
     }
-
     private fun getRequestInterView() {
         viewModelScope.launch {
             val response = repository.getRequestInterView()

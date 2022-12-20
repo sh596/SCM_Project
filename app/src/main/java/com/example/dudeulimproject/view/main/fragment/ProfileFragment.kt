@@ -1,6 +1,8 @@
 package com.example.dudeulimproject.view.main.fragment
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -18,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileFragment :  BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
     private val viewModel by viewModels<ProfileViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
@@ -29,6 +32,9 @@ class ProfileFragment :  BaseFragment<FragmentProfileBinding>(R.layout.fragment_
 
         val mGoogleSignInClient = this.let { GoogleSignIn.getClient(requireActivity(), gso) }
         mGoogleSignInClient.signOut()
+        val editor = requireActivity().getSharedPreferences("sharedPreference",MODE_PRIVATE).edit()
+        editor.putString("accessToken", "")
+        editor.commit()
         startActivity(Intent(context,LoginActivity::class.java))
         requireActivity().finish()
     }

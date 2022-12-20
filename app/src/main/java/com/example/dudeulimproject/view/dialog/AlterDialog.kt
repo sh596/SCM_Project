@@ -25,7 +25,7 @@ class AlterDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_normal, null, false)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_alter, null, false)
 
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setContentView(binding.root)
