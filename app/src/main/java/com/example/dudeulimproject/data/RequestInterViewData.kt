@@ -6,5 +6,6 @@ data class RequestInterViewData(
     val date: String?,
     val title: String,
     val category: String,
-    val isComplete: Boolean
+    val isRequester: Boolean,
+    val user: User,
     )

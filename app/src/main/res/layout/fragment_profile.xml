@@ -23,14 +23,6 @@
             android:layout_height="48dp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="24dp"
-                android:src="@drawable/back_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
@@ -69,10 +61,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/font_medium"
+            android:fontFamily="@font/font_bold"
             android:textColor="?attr/textColorGray"
             android:textSize="16sp"
-            android:text="@{viewModel.user.description}"
+            bindJobVisibility="@{viewModel.user.job}"
+            android:text="@{viewModel.user.job}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textProfileFragmentName" />
@@ -85,6 +78,7 @@
             android:fontFamily="@font/font_medium"
             android:textColor="?attr/textColorGray"
             android:textSize="16sp"
+            android:text="@{viewModel.user.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textProfileFragmentJob" />
@@ -93,6 +87,7 @@
             android:id="@+id/linearProfileFragmentButtonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textProfileFragmentDescription">
@@ -102,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:backgroundTint="@color/black"
+                android:onClick="@{fragment::clickEditProfileButton}"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp">
 
@@ -165,7 +161,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="48dp"
-            tools:listitem="@layout/item_request_interview"
+            tools:listitem="@layout/item_proceed_inter_view"
             bindRequestInterViewAdapter="@{viewModel.completeInterViewList}"
             app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

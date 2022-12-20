@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.dudeulimproject.view.search_result.viewModel.SearchResultViewModel" />
+        <variable
+            name="activity"
+            type="com.example.dudeulimproject.view.search_result.SearchResultActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingStart="24dp"
+                android:onClick="@{activity::clickBackButton}"
                 android:src="@drawable/back_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

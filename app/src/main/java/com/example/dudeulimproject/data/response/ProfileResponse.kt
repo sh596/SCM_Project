@@ -1,5 +1,6 @@
 package com.example.dudeulimproject.data.response
 
+import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -8,8 +9,8 @@ data class ProfileResponse(
     val email: String,
     val id: String,
     val image: String,
-    val interviews: List<InterViewResponse?>?,
+    val interviews: List<InterViewResponse>,
     val job: String?,
     val name: String,
-    val requests: List<RequestResponse?>?
+    val requests: List<RequestResponse>
 )

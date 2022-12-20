@@ -1,132 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="48dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+    <data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp" />
+        <variable
+            name="viewModel"
+            type="com.example.dudeulimproject.view.create_inter_view.viewmodel.CreateInterViewViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/textCreateInterViewFragmentCategoryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="유형"
-        android:textSize="16sp"
-        android:fontFamily="@font/font_bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline1" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCreateInterViewCategory"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentCategoryLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="match_parent"
+        android:paddingTop="48dp">
 
-    <TextView
-        android:id="@+id/textCreateInterViewFragmentFieldLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="분야"
-        android:textSize="16sp"
-        android:fontFamily="@font/font_bold"
-        app:layout_constraintTop_toBottomOf="@id/recyclerCreateInterViewCategory"
-        app:layout_constraintStart_toStartOf="@id/guideline1" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardCreateInterViewFragmentFieldSpinnerBox"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/blue_700"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentFieldLabel">
-
-        <Spinner
-            android:layout_width="92dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
 
-    </androidx.cardview.widget.CardView>
-
-
-    <TextView
-        android:id="@+id/textCreateInterViewFragmentTitleLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="금액    "
-        android:textSize="16sp"
-        android:fontFamily="@font/font_bold"
-        app:layout_constraintTop_toBottomOf="@id/cardCreateInterViewFragmentFieldSpinnerBox"
-        app:layout_constraintStart_toStartOf="@id/guideline1" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardCreateInterViewFragmentTitleBox"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentTitleLabel">
-
-        <EditText
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:background="@null"
-            android:textSize="16sp"
-            android:hint="금액"
-            />
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardCreateInterViewFragmentNextButton"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="@color/blue_700"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintVertical_bias="0.0">
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/textCreateInterViewFragmentCategoryLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="생성"
-            android:textColor="?attr/textColorWhite"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_marginTop="24dp"
+            android:text="유형"
+            android:textSize="16sp"
+            android:fontFamily="@font/font_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/recyclerCreateInterViewCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentCategoryLabel"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.setCategory(0)}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    categoryPosition="@{0}"
+                    selectCategoryPosition="@{viewModel.category}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorSecondary"
+                    android:fontFamily="@font/font_bold"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="4dp"
+                    android:text="온라인"
+                    android:textColor="?attr/colorPrimary" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.setCategory(1)}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    categoryPosition="@{1}"
+                    selectCategoryPosition="@{viewModel.category}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:fontFamily="@font/font_bold"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="4dp"
+                    android:text="오프라인"
+                    android:textColor="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textCreateInterViewFragmentFieldLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="분야"
+            android:textSize="16sp"
+            android:fontFamily="@font/font_bold"
+            app:layout_constraintTop_toBottomOf="@id/recyclerCreateInterViewCategory"
+            app:layout_constraintStart_toStartOf="@id/guideline1" />
+
+
+        <Spinner
+            android:id="@+id/cardCreateInterViewFragmentFieldSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            bindItemSelectFunction="@{viewModel.setField}"
+            android:selectedItemPosition="@{viewModel.field}"
+            android:background="@drawable/search_spinner_style"
+            android:popupBackground="@drawable/search_spinner_popup_style"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentFieldLabel"/>
+
+
+        <TextView
+            android:id="@+id/textCreateInterViewFragmentTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="금액    "
+            android:textSize="16sp"
+            android:fontFamily="@font/font_bold"
+            app:layout_constraintTop_toBottomOf="@id/cardCreateInterViewFragmentFieldSpinner"
+            app:layout_constraintStart_toStartOf="@id/guideline1" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCreateInterViewFragmentTitleBox"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/textCreateInterViewFragmentTitleLabel">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:background="@null"
+                android:textSize="16sp"
+                android:hint="금액"
+                android:text="@={viewModel.amount}"
+                android:inputType="number"/>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

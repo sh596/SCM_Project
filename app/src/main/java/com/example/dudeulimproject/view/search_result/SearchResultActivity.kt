@@ -1,6 +1,7 @@
 package com.example.dudeulimproject.view.search_result
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.base.BaseActivity
@@ -42,6 +43,10 @@ class SearchResultActivity :
         } else {
             "\"$searchText\"의 검색 결과"
         }
+    }
+
+    fun clickBackButton(view: View){
+        finish()
     }
 
     private fun searchInterView(category: String, field: Int, coin: Int, searchText: String?) {

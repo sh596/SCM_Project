@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_sign_up_graph"
+    app:startDestination="@id/signUpFragment1">
+
+    <fragment
+        android:id="@+id/signUpFragment1"
+        android:name="com.example.dudeulimproject.view.sign_up.SignUpFragment1"
+        android:label="SignUpActivity1"
+        tools:layout="@layout/fragment_sign_up1">
+        <action
+            android:id="@+id/action_signUpFragment1_to_signUpFragment2"
+            app:destination="@id/signUpFragment2" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/signUpFragment2"
+        android:name="com.example.dudeulimproject.view.sign_up.SignUpFragment2"
+        android:label="SignUpActivity2"
+        tools:layout="@layout/fragment_sign_up2">
+        <action
+            android:id="@+id/action_signUpFragment2_to_signUpFragment3"
+            app:destination="@id/signUpFragment3" />
+        <action
+            android:id="@+id/actionPopSignUpFragment2"
+            app:popUpTo="@id/signUpFragment2"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/signUpFragment3"
+        android:name="com.example.dudeulimproject.view.sign_up.SignUpFragment3"
+        android:label="SignUpActivity3"
+        tools:layout="@layout/fragment_sign_up_3">
+        <action
+            android:id="@+id/popSignUpFragment3"
+            app:popUpTo="@id/signUpFragment3"
+            />
+    </fragment>
+</navigation>

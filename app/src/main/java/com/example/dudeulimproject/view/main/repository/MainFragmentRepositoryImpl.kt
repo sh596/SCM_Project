@@ -10,6 +10,6 @@ import javax.inject.Inject
 class MainFragmentRepositoryImpl @Inject constructor(private val service: MainService) :
     MainFragmentRepository {
     override suspend fun getExploreInterViewList(): Response<List<InterViewResponse>> {
-        return service.getInterViewAll(Constants.ACCESS_TOKEN.toString())
+        return service.getInterViewAll()
     }
 }

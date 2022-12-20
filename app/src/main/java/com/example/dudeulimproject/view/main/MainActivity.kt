@@ -1,9 +1,10 @@
 package com.example.dudeulimproject.view.main
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentManager.TAG
+import com.example.dudeulimproject.view.create_inter_view.CreateInterViewActivity
 import com.example.dudeulimproject.view.main.viewmodel.MainViewModel
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.base.BaseActivity
@@ -18,5 +19,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.viewModel = viewModel
         binding.activity = this
         binding.lifecycleOwner = this
+    }
+    fun clickFabButton(view: View) {
+        startActivity(Intent(this, CreateInterViewActivity::class.java))
     }
 }

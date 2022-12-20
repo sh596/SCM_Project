@@ -13,7 +13,8 @@ import com.example.dudeulimproject.databinding.ActivityLoginBinding
 import com.example.dudeulimproject.utils.State
 import com.example.dudeulimproject.view.login.viewmodel.LoginViewModel
 import com.example.dudeulimproject.view.main.MainActivity
-import com.example.dudeulimproject.view.sign_up.SignUpActivity1
+import com.example.dudeulimproject.view.sign_up.SignUpActivity
+import com.example.dudeulimproject.view.sign_up.SignUpFragment1
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -46,7 +47,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 finish()
             }else if(t.status == State.Failed) {
                 if(t.message.equals("401")) {
-                    startActivity(Intent(this, SignUpActivity1::class.java))
+                    startActivity(Intent(this, SignUpActivity::class.java))
                 }else {
                     Toast.makeText(this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     mGoogleSignInClient.signOut()
@@ -78,6 +79,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 val task: Task<GoogleSignInAccount> =
                     GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 handleSignInResult(task)
+            }else {
+                Log.d(TAG, "google login: fail${result.resultCode}")
             }
         }
 

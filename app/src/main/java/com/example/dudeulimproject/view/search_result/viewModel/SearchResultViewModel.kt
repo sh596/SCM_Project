@@ -20,22 +20,28 @@ class SearchResultViewModel @Inject constructor(private val repository : SearchR
         get() = _interViewList
     val exploreInterViewList = ObservableArrayList<ExploreInterViewData>()
 
-    fun searchInterView(category: String, field: Int, coin : Int, searchText: String?) {
+    fun searchInterView(category: String, _field: Int, coin : Int, searchText: String?) {
         val amountFrom = when(coin) {
-            0 -> 100
-            1 -> 500
-            2 ->  1000
-            3 -> 1500
-            4 -> 2000
-            else -> 100
+            0 -> null
+            1 -> 100
+            2 -> 500
+            3 ->  1000
+            4 -> 1500
+            5 -> 2000
+            else -> null
         }
         val amountTo = when(coin) {
-            0 -> 500
-            1 -> 1000
-            2 ->  1500
-            3 -> 2000
-            4 -> 50000
-            else -> 500
+            0 -> null
+            1 -> 500
+            2 -> 1000
+            3 ->  1500
+            4 -> 2000
+            5 -> 50000
+            else -> null
+        }
+        var field: Int? = null
+        if(_field != 0){
+            field = _field
         }
         viewModelScope.launch {
             val response = repository.getSearchInterview(category, field, amountFrom, amountTo, searchText)

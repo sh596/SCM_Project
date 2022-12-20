@@ -156,6 +156,18 @@
             </LinearLayout>
         </LinearLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonMainFloating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:elevation="0dp"
+            android:backgroundTint="@color/blue_700"
+            android:src="@drawable/plus"
+            app:tint="@null"
+            android:onClick="@{activity::clickFabButton}"
+            app:layout_constraintBottom_toBottomOf="@id/frameMain"
+            app:layout_constraintEnd_toEndOf="@id/frameMain"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

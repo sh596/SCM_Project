@@ -18,6 +18,7 @@ import com.google.firebase.ktx.Firebase
 
 class ChatRepositoryImpl : ChatRepository {
     override suspend fun sendMessage(chatData: ChatData): DocumentReference? {
+        Log.d(TAG, "sendMessage: ${chatData.InterViewId}")
         return Firebase.firestore
             .collection("chatRoom")
             .document(chatData.InterViewId)

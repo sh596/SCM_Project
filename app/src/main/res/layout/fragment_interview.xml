@@ -39,19 +39,44 @@
                     app:layout_constraintGuide_end="20dp" />
 
                 <TextView
-                    android:id="@+id/textInterViewFragmentProceedTitle"
+                    android:id="@+id/textInterViewFragmentRequestLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/font_bold"
-                    android:text="진행 중인 인터뷰"
+                    android:text="인터뷰 요청"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerInterViewFragmentRequest"
+                    bindRequestInterViewAdapter="@{viewModel.requestInterViewList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="16dp"
+                    android:minHeight="260dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/textInterViewFragmentRequestLabel"
+                    app:spanCount="2"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_request_inter_view" />
+
+                <TextView
+                    android:id="@+id/textInterViewFragmentProceedLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/font_bold"
+                    android:text="진행 중인 인터뷰"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/guideline1"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerInterViewFragmentRequest" />
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerInterViewFragmentProceed"
-                    bindRequestInterViewAdapter="@{viewModel.proceedInterViewList}"
+                    bindProceedInterViewAdapter="@{viewModel.proceedInterViewList}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -59,37 +84,10 @@
                     android:layout_marginEnd="10dp"
                     android:minHeight="260dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/textInterViewFragmentProceedTitle"
+                    app:layout_constraintTop_toBottomOf="@id/textInterViewFragmentProceedLabel"
                     app:spanCount="2"
                     tools:itemCount="2"
-                    tools:listitem="@layout/item_request_interview" />
-
-                <TextView
-                    android:id="@+id/textInterViewFragmentSucceedTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
-                    android:fontFamily="@font/font_bold"
-                    android:text="완료된 인터뷰"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@id/guideline1"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerInterViewFragmentProceed" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerInterViewFragmentComplete"
-                    bindRequestInterViewAdapter="@{viewModel.completeInterViewList}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="48dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textInterViewFragmentSucceedTitle"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:spanCount="2"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/item_request_interview" />
-
+                    tools:listitem="@layout/item_proceed_inter_view" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

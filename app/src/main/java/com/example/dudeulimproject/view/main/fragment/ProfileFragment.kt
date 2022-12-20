@@ -10,6 +10,7 @@ import com.example.dudeulimproject.databinding.FragmentInterviewBinding
 import com.example.dudeulimproject.databinding.FragmentProfileBinding
 import com.example.dudeulimproject.view.login.LoginActivity
 import com.example.dudeulimproject.view.main.viewmodel.ProfileViewModel
+import com.example.dudeulimproject.view.profile_edit.ProfileEditActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,5 +31,14 @@ class ProfileFragment :  BaseFragment<FragmentProfileBinding>(R.layout.fragment_
         mGoogleSignInClient.signOut()
         startActivity(Intent(context,LoginActivity::class.java))
         requireActivity().finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getMyProfile()
+    }
+
+    fun clickEditProfileButton(view: View){
+        startActivity(Intent(binding.root.context, ProfileEditActivity::class.java))
     }
 }

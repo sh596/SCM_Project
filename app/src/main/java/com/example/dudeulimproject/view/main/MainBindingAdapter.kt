@@ -23,6 +23,7 @@ import com.example.dudeulimproject.view.main.adapter.ExploreInterViewAdapter
 import com.example.dudeulimproject.view.main.adapter.MainViewPagerAdapter
 import com.example.dudeulimproject.data.ExploreInterViewData
 import com.example.dudeulimproject.data.RequestInterViewData
+import com.example.dudeulimproject.view.main.adapter.ProceedInterViewAdapter
 import com.example.dudeulimproject.view.main.adapter.RequestInterViewAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -81,6 +82,17 @@ object MainBindingAdapter {
     ) {
         val adapter = view.adapter as RequestInterViewAdapter? ?: return
         if (requestInterViewList != null) {
+            adapter.submitList(requestInterViewList.toMutableList())
+        }
+    }
+    @BindingAdapter("bindProceedInterViewAdapter")
+    @JvmStatic
+    fun bindProceedInterViewAdapter(
+        view: RecyclerView,
+        requestInterViewList: ObservableArrayList<RequestInterViewData>?
+    ) {
+        val adapter = view.adapter as ProceedInterViewAdapter? ?: return
+        if (requestInterViewList != null) {
             Log.d(TAG, "setExploreList: $requestInterViewList")
             adapter.submitList(requestInterViewList.toMutableList())
         }
@@ -137,11 +149,13 @@ object MainBindingAdapter {
         selectPosition: Int,
     ) {
         if (position == selectPosition) {
-            view.setBackgroundColor(view.context.getColor(R.color.blue_700))
-            view.setTextColor(view.context.getColor(R.color.white))
+            view.setBackgroundColor(view.context.getColor(R.color.blue_300))
+            view.setTextColor(view.context.getColor(R.color.blue_700))
+            view.typeface = ResourcesCompat.getFont(view.context, R.font.font_bold)
         } else {
-            view.setBackgroundColor(view.context.getColor(R.color.gray_300))
+            view.setBackgroundColor(view.context.getColor(R.color.gray_100))
             view.setTextColor(view.context.getColor(R.color.gray_700))
+            view.typeface = ResourcesCompat.getFont(view.context, R.font.font_medium)
         }
     }
 
@@ -162,5 +176,14 @@ object MainBindingAdapter {
 
     }
 
+    @BindingAdapter("bindJobVisibility")
+    @JvmStatic
+    fun bindJobVisibility (view: TextView, job: String?){
+        if(job.isNullOrBlank()){
+            view.visibility = View.GONE
+        }else {
+            view.visibility = View.VISIBLE
+        }
+    }
 
 }

@@ -9,6 +9,6 @@ import javax.inject.Inject
 class RequestFragmentRepositoryImpl @Inject constructor(private val service: MainService) :
     RequestFragmentRepository {
     override suspend fun getRequestInterView(): Response<List<RequestInterViewResponse>> {
-        return service.getRequestInterView(Constants.ACCESS_TOKEN.toString())
+        return service.getRequestInterView()
     }
 }

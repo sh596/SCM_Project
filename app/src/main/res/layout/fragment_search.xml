@@ -17,8 +17,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"
@@ -119,12 +117,12 @@
                     selectCategoryPosition="@{viewModel.category}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
+                    android:background="?attr/colorSecondary"
                     android:fontFamily="@font/font_bold"
                     android:paddingHorizontal="18dp"
                     android:paddingVertical="4dp"
                     android:text="온라인"
-                    android:textColor="@color/white" />
+                    android:textColor="?attr/colorPrimary" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -166,29 +164,16 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/recyclerSearchFragmentCategory" />
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSearchFragmentFieldSpinnerBox"
+        <Spinner
+            android:id="@+id/spinnerSearchFragmentField"
+            bindItemSelectFunction="@{viewModel.setField}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:backgroundTint="@color/blue_700"
-            android:paddingVertical="4dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
+            android:background="@drawable/search_spinner_style"
+            android:popupBackground="@drawable/search_spinner_popup_style"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentFieldTitle">
-
-            <Spinner
-                android:id="@+id/spinnerSearchFragmentField"
-                bindItemSelectFunction="@{viewModel.setField}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="4dp"
-                android:backgroundTint="@color/white"
-                android:popupBackground="?attr/colorPrimary" />
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentFieldTitle"/>
 
         <TextView
             android:id="@+id/textSearchFragmentAmountTitle"
@@ -199,29 +184,18 @@
             android:text="금액"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/cardSearchFragmentFieldSpinnerBox" />
+            app:layout_constraintTop_toBottomOf="@id/spinnerSearchFragmentField" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSearchFragmentCoinSpinnerBox"
+        <Spinner
+            android:id="@+id/spinnerSearchFragmentCoin"
+            bindItemSelectFunction="@{viewModel.setCoin}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="@color/blue_700"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/search_spinner_style"
+            android:popupBackground="@drawable/search_spinner_popup_style"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentAmountTitle">
-
-            <Spinner
-                android:id="@+id/spinnerSearchFragmentCoin"
-                bindItemSelectFunction="@{viewModel.setCoin}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="4dp"
-                android:backgroundTint="@color/white"
-                android:popupBackground="?attr/colorPrimary" />
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toBottomOf="@id/textSearchFragmentAmountTitle"/>
 
         <Space
             android:id="@+id/spaceFragmentBottomNavigation"

@@ -21,7 +21,9 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-50dp"
+            tools:layout_editor_absoluteY="47dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,71 +55,133 @@
                     app:layout_constraintStart_toStartOf="@id/guideline1"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardRequestInterViewProfile"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <LinearLayout
+                    android:id="@+id/layoutRequestInterViewPublisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
+                    bindBooleanInVisibility="@{!viewModel.isRequester()}"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
                     app:layout_constraintTop_toBottomOf="@id/textRequestInterViewTitle">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/gray_100" />
-                </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardRequestInterViewPublisherProfile"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            loadImage="@{viewModel.interView.publisher.image}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_100" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/font_medium"
+                        android:onClick="@{activity::clickProfile}"
+                        android:text="@{viewModel.interView.publisher.name}"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@id/cardRequestInterViewPublisherProfile"
+                        app:layout_constraintStart_toEndOf="@id/cardRequestInterViewPublisherProfile"
+                        app:layout_constraintTop_toTopOf="@id/cardRequestInterViewPublisherProfile" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutRequestInterViewRequester"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    bindBooleanInVisibility="@{viewModel.isRequester()}"
+                    app:layout_constraintStart_toEndOf="@id/layoutRequestInterViewPublisher"
+                    app:layout_constraintTop_toBottomOf="@id/textRequestInterViewTitle">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardRequestInterViewRequesterProfile"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            loadImage="@{viewModel.interView.requester.image}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_100" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/font_medium"
+                        android:onClick="@{activity::clickProfile}"
+                        android:text="@{viewModel.interView.Requester.name}"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textRequestInterViewChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/font_medium"
+                    android:gravity="center"
+                    android:onClick="@{activity::clickChatButton}"
+                    android:text="채팅"
+                    android:textColor="?attr/textColorGray"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@id/textRequestInterViewTitle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
                     android:fontFamily="@font/font_medium"
-                    android:text="@{viewModel.interView.user.name}"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@id/cardRequestInterViewProfile"
-                    app:layout_constraintStart_toEndOf="@id/cardRequestInterViewProfile"
-                    app:layout_constraintTop_toTopOf="@id/cardRequestInterViewProfile" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:fontFamily="@font/font_medium"
-                    android:gravity="center"
-                    android:text="채팅"
-                    android:onClick="@{activity::clickChatButton}"
+                    android:onClick="@{activity::clickInfoButton}"
+                    android:text="정보 수정"
                     android:textColor="?attr/textColorGray"
-                    app:layout_constraintBottom_toBottomOf="@id/cardRequestInterViewProfile"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"
-                    app:layout_constraintTop_toTopOf="@id/cardRequestInterViewProfile" />
+                    app:layout_constraintTop_toTopOf="@id/layoutRequestInterViewInformation" />
 
                 <LinearLayout
-                    android:id="@+id/linearRequestInterViewInformation"
+                    android:id="@+id/layoutRequestInterViewInformation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@id/guideline2"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@id/guideline1"
-                    app:layout_constraintTop_toBottomOf="@id/cardRequestInterViewProfile">
+                    app:layout_constraintTop_toBottomOf="@id/textRequestInterViewChat">
 
                     <LinearLayout
+                        bindCategoryToOffline="@{viewModel.interView.category}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/font_medium"
                             android:text="장소"
                             android:textColor="?attr/textColorGray" />
 
                         <TextView
+                            android:id="@+id/textRequestInterViewPlace"
+                            bindPlace="@{viewModel.interView.place}"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="18dp"
                             android:fontFamily="@font/font_bold"
-                            android:text="@{viewModel.interView.place}"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -129,38 +193,22 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/font_medium"
                             android:text="일정"
                             android:textColor="?attr/textColorGray" />
 
                         <TextView
+                            android:id="@+id/textRequestInterViewDate"
+                            bindDate="@{viewModel.interView.date}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="18dp"
                             android:fontFamily="@font/font_bold"
-                            android:text="@{viewModel.interView.date}"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textRequestInterViewQuestionLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
-                    android:fontFamily="@font/font_bold"
-                    android:text="질문지"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@id/guideline1"
-                    app:layout_constraintTop_toBottomOf="@id/linearRequestInterViewInformation" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerRequestInterViewQuestion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    bindQuestionAdapter="@{viewModel.interView.question}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/textRequestInterViewQuestionLabel" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -175,20 +223,24 @@
             app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.card.MaterialCardView
+                bindIsRequester="@{viewModel.isRequester}"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/blue_700"
+                android:onClick="@{activity::clickAcceptButton}"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
+                    bindIsRequester="@{viewModel.isRequester}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -198,6 +250,8 @@
                     android:textColor="?attr/textColorWhite"
                     android:textSize="16sp" />
             </com.google.android.material.card.MaterialCardView>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

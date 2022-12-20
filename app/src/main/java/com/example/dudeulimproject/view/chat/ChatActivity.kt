@@ -15,25 +15,25 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
-    private val firebaseDB = FirebaseDatabase.getInstance()
-
     private val viewModel by viewModels<ChatViewModel> ()
-
+    private lateinit var user : String
+    private lateinit var id : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
         binding.activity = this
         binding.lifecycleOwner = this
 
-        binding.recyclerChat.adapter = ChatAdapter("001")
-        viewModel.initChat("001")
-
+        user = intent.getStringExtra("userId")!!
+        id = intent.getStringExtra("roomId")!!
+        binding.recyclerChat.adapter = ChatAdapter(user)
+        viewModel.initChat(id)
     }
     fun clickBackButton(view: View) {
         finish()
     }
     fun clickSendButton(view : View){
-        viewModel.sendChat()
+        viewModel.sendChat(user,id)
         binding.editSearchFragmentSearchBox.text.clear()
     }
 }

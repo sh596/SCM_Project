@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.example.dudeulimproject.R
 import com.example.dudeulimproject.base.BaseFragment
 import com.example.dudeulimproject.databinding.FragmentInterviewBinding
+import com.example.dudeulimproject.view.main.adapter.ProceedInterViewAdapter
 import com.example.dudeulimproject.view.main.adapter.RequestInterViewAdapter
 import com.example.dudeulimproject.view.main.viewmodel.InterViewViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,10 @@ class InterViewFragment : BaseFragment<FragmentInterviewBinding>(R.layout.fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
-        binding.recyclerInterViewFragmentProceed.adapter = RequestInterViewAdapter()
-        binding.recyclerInterViewFragmentComplete.adapter = RequestInterViewAdapter()
+        val requestAdapter = RequestInterViewAdapter()
+        val proceedAdapter = ProceedInterViewAdapter()
+
+        binding.recyclerInterViewFragmentRequest.adapter = requestAdapter
+        binding.recyclerInterViewFragmentProceed.adapter = proceedAdapter
     }
 }

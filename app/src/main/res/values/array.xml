@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="field_array">
+        <item>전체</item>
         <item>IT</item>
         <item>전문직</item>
         <item>요식업</item>
@@ -10,6 +11,7 @@
     </string-array>
 
     <string-array name="coin_array">
+        <item>전체</item>
         <item>100 ~ 500</item>
         <item>500 ~ 1000</item>
         <item>1000 ~ 1500</item>

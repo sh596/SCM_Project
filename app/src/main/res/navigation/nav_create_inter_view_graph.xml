@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_create_inter_view_graph"
+    app:startDestination="@id/createInterViewFragment1">
+
+    <fragment
+        android:id="@+id/createInterViewFragment1"
+        android:label="CreateInterViewFragment1"
+        android:name="com.example.dudeulimproject.view.create_inter_view.fragment.CreateInterViewFragment1"
+        tools:layout="@layout/fragment_create_inter_view_1">
+
+        <action
+            android:id="@+id/actionCreateInterViewToFragement2"
+            app:destination="@id/createInterViewFragment2" />
+        <action
+            android:id="@+id/actionCreateInterViewPopFragment1"
+            app:popUpTo="@id/createInterViewFragment1"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/createInterViewFragment2"
+        android:label="CreateInterViewFragment1"
+        android:name="com.example.dudeulimproject.view.create_inter_view.fragment.CreateInterViewFragment2"
+        tools:layout="@layout/fragment_create_inter_view_2">
+
+        <action
+            android:id="@+id/actionCreateInterViewPopFragment2"
+            app:popUpTo="@id/createInterViewFragment2"/>
+    </fragment>
+
+</navigation>

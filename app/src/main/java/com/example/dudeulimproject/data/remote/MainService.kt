@@ -1,8 +1,6 @@
 package com.example.dudeulimproject.data.remote
 
-import com.example.dudeulimproject.data.request.LoginRequest
-import com.example.dudeulimproject.data.request.RegistRequest
-import com.example.dudeulimproject.data.request.RequestRequest
+import com.example.dudeulimproject.data.request.*
 import com.example.dudeulimproject.data.response.*
 import retrofit2.Response
 import retrofit2.http.*
@@ -15,14 +13,13 @@ interface MainService {
     suspend fun regist(@Body request: RegistRequest): Response<TokenResponse>
 
     @POST("/interview")
-    suspend fun postInterView(@Body interViewSeeMoreResponse: InterViewSeeMoreResponse): Response<InterViewSeeMoreResponse>
+    suspend fun postInterView(@Body request: InterviewPostRequest): Response<InterViewPostResponse>
 
     @GET("/interview")
     suspend fun getInterView(
-        @Header("Authorization") token: String,
-        @Query("category") category: String,
-        @Query("type") type: Int,
-        @Query("amountFrom") amountFrom: Int,
+        @Query("category") category: String?,
+        @Query("type") type: Int?,
+        @Query("amountFrom") amountFrom: Int?,
         @Query("amountTo") amountTo: Int?,
         @Query("title") title: String? = null,
         @Query("limit") limit: Int?,
@@ -31,26 +28,31 @@ interface MainService {
 
     @GET("/interview")
     suspend fun getInterViewAll(
-        @Header("Authorization") token: String,
     ): Response<List<InterViewResponse>>
 
 
     @GET("/interview/{id}")
     suspend fun getInterViewById(
-        @Header("Authorization") token: String,
         @Path("id") interViewId: String
     ): Response<InterViewSeeMoreResponse>
 
     @POST("/request/{int_id}")
-    suspend fun requestInterView(@Header("Authorization") token: String, @Path("int_id") id: String,
+    suspend fun requestInterView(@Path("int_id") id: String,
                                  @Body request: RequestRequest
     ): Response<RequestResponse>
 
     @GET("/profile/requests/incoming")
-    suspend fun getRequestInterView(@Header("Authorization") token: String): Response<List<RequestInterViewResponse>>
+    suspend fun getRequestInterView(): Response<List<RequestInterViewResponse>>
 
     @GET("/profile/me")
-    suspend fun getMyProfile(@Header("Authorization") token: String): Response<ProfileResponse>
+    suspend fun getMyProfile(): Response<ProfileResponse>
 
+    @GET("/auth")
+    suspend fun checkLogin() : Response<String>
 
+    @PUT("/profile/me")
+    suspend fun updateProfile(@Body request: UpdateProfileRequest) : Response<Boolean>
+
+    @GET("profile/{id}")
+    suspend fun getProfile(@Path("id") id: String): Response<ProfileResponse>
 }

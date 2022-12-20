@@ -8,6 +8,6 @@ import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(private val service: MainService) : ProfileRepository{
     override suspend fun getMyProfile() : Response<ProfileResponse>{
-        return service.getMyProfile(Constants.ACCESS_TOKEN.toString())
+        return service.getMyProfile()
     }
 }

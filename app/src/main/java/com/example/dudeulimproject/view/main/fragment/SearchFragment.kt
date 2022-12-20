@@ -50,6 +50,5 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         intent.putExtra("field", viewModel.field.value!!)
         intent.putExtra("coin", viewModel.coin.value!!)
         startActivity(intent)
-
     }
 }

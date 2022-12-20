@@ -5,7 +5,10 @@ import retrofit2.Response
 
 interface SearchResultRepository {
     suspend fun getSearchInterview(
-        category: String, type: Int, amountFrom: Int, amountTo: Int,
+        category: String?,
+        type: Int?,
+        amountFrom: Int?,
+        amountTo: Int?,
         title: String?
     ): Response<List<InterViewResponse>>
 }

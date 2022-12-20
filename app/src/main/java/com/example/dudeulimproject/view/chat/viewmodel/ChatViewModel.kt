@@ -17,16 +17,14 @@ class ChatViewModel @Inject constructor(private val repository: ChatRepository) 
     val chattingText = MutableLiveData<String>()
     val chatList = ObservableArrayList<ChatData>()
 
-
     fun initChat(id: String) {
-        repository.subscribeMessages(chatList, "001")
+        repository.subscribeMessages(chatList, id)
     }
 
-
-    fun sendChat() {
+    fun sendChat(userId: String, roomId: String) {
         viewModelScope.launch {
-            if(chattingText.value!!.isNotBlank()) {
-                repository.sendMessage(ChatData("001", "001", chattingText.value!!, System.currentTimeMillis()))
+            if(!chattingText.value.isNullOrBlank()) {
+                repository.sendMessage(ChatData(userId, roomId, chattingText.value!!, System.currentTimeMillis()))
             }
         }
     }

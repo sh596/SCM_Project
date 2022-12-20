@@ -21,7 +21,11 @@ class ProfileViewModel @Inject constructor(private val repository: ProfileReposi
     val completeInterViewList = ObservableArrayList<RequestInterViewData>()
 
     init {
-        getMyProfile()
+        try {
+            getMyProfile()
+        }catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     fun getMyProfile () {

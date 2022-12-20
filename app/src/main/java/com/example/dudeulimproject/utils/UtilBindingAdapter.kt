@@ -1,6 +1,8 @@
 package com.example.dudeulimproject.utils
 
+import android.net.Uri
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager.TAG
@@ -29,4 +31,22 @@ object UtilBindingAdapter {
             Log.d(TAG, "loadImage: ${it.message}")
         }
     }
+    @BindingAdapter("bindUri")
+    @JvmStatic
+    fun bindUri (view : ImageView, uri: Uri?){
+        if(uri == null) {
+            return
+        }
+        view.setImageURI(uri)
+    }
+    @BindingAdapter("bindBooleanInVisibility")
+    @JvmStatic
+    fun bindBooleanInVisibility(view: View, boolean: Boolean){
+        if(boolean){
+            view.visibility = View.VISIBLE
+        }else {
+            view.visibility = View.GONE
+        }
+    }
+
 }
