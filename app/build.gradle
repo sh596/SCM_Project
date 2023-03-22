@@ -22,7 +22,6 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "SERVICE_KEY", properties['service_key']
 
     }
 

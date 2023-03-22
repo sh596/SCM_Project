@@ -19,6 +19,10 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -27,15 +31,19 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.checkResult.observe(this, Observer {
-            if(it.status == State.Success){
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }else if(it.status == State.Failed) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
-        })
-        viewModel.checkLogin()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(2000)
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
+        }
+//        viewModel.checkResult.observe(this, Observer {
+//            if(it.status == State.Success){
+//                startActivity(Intent(this, MainActivity::class.java))
+//                finish()
+//            }else if(it.status == State.Failed) {
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }
+//        })
+//        viewModel.checkLogin()
     }
 }
